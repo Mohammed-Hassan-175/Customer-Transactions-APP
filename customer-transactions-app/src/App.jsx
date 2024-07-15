@@ -12,12 +12,18 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const customersResponse = await axios.get('http://localhost:5000/customers');
-        const transactionsResponse = await axios.get('http://localhost:5000/transactions');
+        const customersResponse = await axios.get(
+          "https://mohammed-hassan-175.github.io/JSON-Server/customers.json"
+        );
+        const transactionsResponse = await axios.get(
+          "https://mohammed-hassan-175.github.io/JSON-Server/transactions.json"
+        );
         setData({
-          customers: customersResponse.data,
-          transactions: transactionsResponse.data,
+          customers: customersResponse.data.customers,
+          transactions: transactionsResponse.data.transactions,
         });
+        console.log(customersResponse.data);
+        console.log(transactionsResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
